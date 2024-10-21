@@ -8,9 +8,6 @@ class BaseConfig:
 
     TESTING = False
 
-    # protect user session cookies
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-
 
 class DevelopmentConfig(BaseConfig):
     ''' Development Config '''
