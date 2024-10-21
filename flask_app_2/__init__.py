@@ -10,13 +10,7 @@ def create_app(config_name: str = '') -> Flask:
     if not config_name:
         config_name = os.environ.get('FLASK_CONFIG', 'development')
 
-    # uncomment to print config
-    # print(f'config_name: {config_name}')
-
-    # instantiate the app
     app = Flask(__name__)
-
-    # set config
     app.config.from_object(config[config_name])
 
     return app
