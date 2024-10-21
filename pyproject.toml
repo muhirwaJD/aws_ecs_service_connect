@@ -21,7 +21,6 @@ dependencies = [
     'python-dotenv'
 ]
 
-
 [tool.flake8]  # checks pep8 formatting
 max_line_length = 127
 count = true  # print the total number of errors

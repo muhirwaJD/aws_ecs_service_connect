@@ -121,13 +121,13 @@ npm install -g aws-cdk
 
 ## References
 
-<sup>1</sup>https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-application-load-balancer.html
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-application-load-balancer.html
 > If your service's task definition uses the awsvpc network mode (which is required for the Fargate launch type), you must choose IP addresses as the target type. This is because tasks that use the awsvpc network mode are associated with an elastic network interface, not an Amazon EC2 instance.
 
-<sup>2</sup>https://stackoverflow.com/questions/42715647/whats-the-target-group-port-for-when-using-application-load-balancer-ec2-con
+https://stackoverflow.com/questions/42715647/whats-the-target-group-port-for-when-using-application-load-balancer-ec2-con
 > Protocol port will be overriden by ECS anwyays so doesn't matter.
 
-<sup>3</sup>https://www.cloudkeeper.com/insight/blog/amazon-ecs-service-communication-via-service-discovery-connect
+https://www.cloudkeeper.com/insight/blog/amazon-ecs-service-communication-via-service-discovery-connect
 > Choose client and server service if the container exposes and listens on a port for network traffic. This service gets an endpoint to communicate with any service within the same namespace
 
 [CDK Workshop](https://cdkworkshop.com/)
