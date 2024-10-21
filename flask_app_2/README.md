@@ -1,0 +1,1 @@
+test communication within same cluster with AWS ECS Service Connect

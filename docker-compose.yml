@@ -1,0 +1,85 @@
+version: '3.1'
+
+services:
+  flask_app_1:
+    build:
+      context: ./
+      # Dockerfile shared with `flask_app` to avoid having to build two Docker images
+      dockerfile: ./Dockerfile
+    command: ['python', '-m', 'flask', 'run', '--host=0.0.0.0', '--port=5000']
+    # command: ['python', '-m', 'flask', 'run', '--host=0.0.0.0', '--port=5000']
+    # volume mounts project dir (current directory, '.') on host to /app (specified in Dockerfiel) inside container
+    # allows modifying code on the fly, without having to rebuild the image
+    volumes:
+     - .:/app
+    environment:
+      - FLASK_APP=flask_app_1/app.py  # set the Flask environment variable
+    env_file:
+      - ./default.env
+    networks:
+      - mynetwork
+    expose:  # container communication only, no host communication
+      - 5000
+    ports:  # communication with host
+      - 5000:5000
+    container_name: flask_app_1
+    # allows for debugging with pdb
+    stdin_open: true
+    tty: true
+    restart: always  # if container fails and exits docker-compose will spin it back up
+
+  flask_app_2:
+    build:
+      context: ./
+      # Dockerfile shared with `flask_app` to avoid having to build two Docker images
+      dockerfile: ./Dockerfile
+    command: ['python', '-m', 'flask', 'run', '--host=0.0.0.0', '--port=5001']
+    # volume mounts project dir (current directory, '.') on host to /app (specified in Dockerfiel) inside container
+    # allows modifying code on the fly, without having to rebuild the image
+    volumes:
+     - .:/app
+    environment:
+      - FLASK_APP=flask_app_2/app.py  # set the Flask environment variable
+    env_file:
+      - ./default.env
+    networks:
+      - mynetwork
+    expose:  # container communication only, no host communication
+      - 5001
+    ports:  # communication with host
+      - 5001:5001
+    container_name: flask_app_2
+    # allows for debugging with pdb
+    stdin_open: true
+    tty: true
+    restart: always  # if container fails and exits docker-compose will spin it back up
+
+  flask_app_3:
+    build:
+      context: ./
+      # Dockerfile shared with `flask_app` to avoid having to build two Docker images
+      dockerfile: ./Dockerfile
+    command: ['python', '-m', 'flask', 'run', '--host=0.0.0.0', '--port=5002']
+    # volume mounts project dir (current directory, '.') on host to /app (specified in Dockerfiel) inside container
+    # allows modifying code on the fly, without having to rebuild the image
+    volumes:
+     - .:/app
+    environment:
+      - FLASK_APP=flask_app_3/app.py  # set the Flask environment variable
+    env_file:
+      - ./default.env
+    networks:
+      - mynetwork
+    expose:  # container communication only, no host communication
+      - 5002
+    ports:  # communication with host
+      - 5002:5002
+    container_name: flask_app_3
+    # allows for debugging with pdb
+    stdin_open: true
+    tty: true
+    restart: always  # if container fails and exits docker-compose will spin it back up
+
+# shared network so all Docker service can communicate with each other
+networks:
+  mynetwork:

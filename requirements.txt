@@ -1,0 +1,5 @@
+uv
+aws-cdk-lib
+requests
+flask
+python-dotenv
