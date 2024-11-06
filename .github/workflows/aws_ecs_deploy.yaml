@@ -49,7 +49,7 @@ jobs:
     env:
       # shared between all services
       AWS_ECR_REPOSITORY_NAME: service-connect-demo-ecr
-      AWS_ECR_CLUSTER_NAME: service-connect-demo-cluster
+      AWS_ECS_CLUSTER_NAME: service-connect-demo-cluster
       AWS_ECS_SERVICE_NAME_1: service-connect-demo-service-1
       AWS_ECS_SERVICE_NAME_2: service-connect-demo-service-2
       AWS_ECS_SERVICE_NAME_3: service-connect-demo-service-3
