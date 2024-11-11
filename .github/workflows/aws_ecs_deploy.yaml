@@ -57,6 +57,11 @@ jobs:
       AWS_ECS_TASK_DEFINITION_1: service-connect-demo-task-def-1
       AWS_ECS_TASK_DEFINITION_2: service-connect-demo-task-def-2
       AWS_ECS_TASK_DEFINITION_3: service-connect-demo-task-def-3
+
+      AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_1: flask-app-1
+      AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_2: flask-app-2
+      AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_3: flask-app-3
+
       AWS_DEFAULT_REGION: us-east-1
       IMAGE_TAG: ${{ github.sha }}
 #       IMAGE_TAG: latest
@@ -92,7 +97,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
         task-definition: service-connect-demo-task-def-1.json
-        container-name: ${{ env.AWS_ECR_REPOSITORY_NAME }}
+        container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_1 }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
     - name: Fill in the new image ID in the Amazon ECS task definition 2
@@ -100,7 +105,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
         task-definition: service-connect-demo-task-def-2.json
-        container-name: ${{ env.AWS_ECR_REPOSITORY_NAME }}
+        container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_2 }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
     - name: Fill in the new image ID in the Amazon ECS task definition 3
@@ -108,7 +113,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
         task-definition: service-connect-demo-task-def-3.json
-        container-name: ${{ env.AWS_ECR_REPOSITORY_NAME }}
+        container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_3 }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
     - name: Deploy Amazon ECS task definition to ECS service 1
