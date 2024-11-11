@@ -92,21 +92,21 @@ jobs:
         image_tag: ${{ env.IMAGE_TAG }}
         push_image_and_stages: true
 
-    # - name: Fill in the new image ID in the Amazon ECS task definition 1
-    #   id: task-def-1
-    #   uses: aws-actions/amazon-ecs-render-task-definition@master
-    #   with:
-    #     task-definition: service-connect-demo-task-def-1.json
-    #     container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_1 }}
-    #     image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
+    - name: Fill in the new image ID in the Amazon ECS task definition 1
+      id: task-def-1
+      uses: aws-actions/amazon-ecs-render-task-definition@master
+      with:
+        task-definition: service-connect-demo-task-def-1.json
+        container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_1 }}
+        image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
-    # - name: Fill in the new image ID in the Amazon ECS task definition 2
-    #   id: task-def-2
-    #   uses: aws-actions/amazon-ecs-render-task-definition@master
-    #   with:
-    #     task-definition: service-connect-demo-task-def-2.json
-    #     container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_2 }}
-    #     image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
+    - name: Fill in the new image ID in the Amazon ECS task definition 2
+      id: task-def-2
+      uses: aws-actions/amazon-ecs-render-task-definition@master
+      with:
+        task-definition: service-connect-demo-task-def-2.json
+        container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_2 }}
+        image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
     - name: Fill in the new image ID in the Amazon ECS task definition 3
       id: task-def-3
@@ -116,23 +116,23 @@ jobs:
         container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_3 }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
-    # - name: Deploy Amazon ECS task definition to ECS service 1
-    #   id: ecs-service-1
-    #   uses: aws-actions/amazon-ecs-deploy-task-definition@master
-    #   with:
-    #     task-definition: ${{ steps.task-def-1.outputs.task-definition }}
-    #     service: ${{ env.AWS_ECS_SERVICE_NAME_1 }}
-    #     cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
-    #     wait-for-service-stability: true
+    - name: Deploy Amazon ECS task definition to ECS service 1
+      id: ecs-service-1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@master
+      with:
+        task-definition: ${{ steps.task-def-1.outputs.task-definition }}
+        service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_1 }}
+        cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
+        wait-for-service-stability: true
 
-    # - name: Deploy Amazon ECS task definition to ECS service 2
-    #   id: ecs-service-2
-    #   uses: aws-actions/amazon-ecs-deploy-task-definition@master
-    #   with:
-    #     task-definition: ${{ steps.task-def-2.outputs.task-definition }}
-    #     service: ${{ env.AWS_ECS_SERVICE_NAME_2 }}
-    #     cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
-    #     wait-for-service-stability: true
+    - name: Deploy Amazon ECS task definition to ECS service 2
+      id: ecs-service-2
+      uses: aws-actions/amazon-ecs-deploy-task-definition@master
+      with:
+        task-definition: ${{ steps.task-def-2.outputs.task-definition }}
+        service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_2 }}
+        cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
+        wait-for-service-stability: true
 
     - name: Deploy Amazon ECS task definition to ECS service 3
       id: ecs-service-3
