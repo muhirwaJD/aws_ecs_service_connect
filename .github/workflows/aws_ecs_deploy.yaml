@@ -112,7 +112,7 @@ jobs:
       id: task-def-3
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
-        task-definition: service-connect-demo-task-def-3.json
+        task-definition: ./service-connect-demo-task-def-3.json
         container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_3 }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
