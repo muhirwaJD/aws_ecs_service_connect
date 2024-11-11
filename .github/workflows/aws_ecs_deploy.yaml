@@ -122,7 +122,7 @@ jobs:
     #   with:
     #     task-definition: ${{ steps.task-def-1.outputs.task-definition }}
     #     service: ${{ env.AWS_ECS_SERVICE_NAME_1 }}
-    #     cluster: ${{ env.AWS_ECR_CLUSTER_NAME }}
+    #     cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
     #     wait-for-service-stability: true
 
     # - name: Deploy Amazon ECS task definition to ECS service 2
@@ -131,7 +131,7 @@ jobs:
     #   with:
     #     task-definition: ${{ steps.task-def-2.outputs.task-definition }}
     #     service: ${{ env.AWS_ECS_SERVICE_NAME_2 }}
-    #     cluster: ${{ env.AWS_ECR_CLUSTER_NAME }}
+    #     cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
     #     wait-for-service-stability: true
 
     - name: Deploy Amazon ECS task definition to ECS service 3
@@ -139,6 +139,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
         task-definition: ${{ steps.task-def-3.outputs.task-definition }}
-        service: ${{ env.AWS_ECR_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_3 }}
-        cluster: ${{ env.AWS_ECR_CLUSTER_NAME }}
+        service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_3 }}
+        cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
         wait-for-service-stability: true
