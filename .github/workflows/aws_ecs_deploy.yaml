@@ -116,6 +116,7 @@ jobs:
         container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_3 }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
+    # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
     - name: Deploy Amazon ECS task definition to ECS service 1
       id: ecs-service-1
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
@@ -123,8 +124,9 @@ jobs:
         task-definition: ${{ steps.task-def-1.outputs.task-definition }}
         service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_1 }}
         cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
-        wait-for-service-stability: true
+        wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
 
+    # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
     - name: Deploy Amazon ECS task definition to ECS service 2
       id: ecs-service-2
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
@@ -132,8 +134,9 @@ jobs:
         task-definition: ${{ steps.task-def-2.outputs.task-definition }}
         service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_2 }}
         cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
-        wait-for-service-stability: true
+        wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
 
+    # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
     - name: Deploy Amazon ECS task definition to ECS service 3
       id: ecs-service-3
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
@@ -141,4 +144,4 @@ jobs:
         task-definition: ${{ steps.task-def-3.outputs.task-definition }}
         service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_3 }}
         cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
-        wait-for-service-stability: true
+        wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
