@@ -120,7 +120,7 @@ jobs:
       id: ecs-service-1
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        task-definition: ${{ steps.task-def-1.outputs.task-definition }}
         service: ${{ env.AWS_ECS_SERVICE_NAME_1 }}
         cluster: ${{ env.AWS_ECR_CLUSTER_NAME }}
         wait-for-service-stability: true
@@ -129,7 +129,7 @@ jobs:
       id: ecs-service-2
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        task-definition: ${{ steps.task-def-2.outputs.task-definition }}
         service: ${{ env.AWS_ECS_SERVICE_NAME_2 }}
         cluster: ${{ env.AWS_ECR_CLUSTER_NAME }}
         wait-for-service-stability: true
@@ -138,7 +138,7 @@ jobs:
       id: ecs-service-3
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        task-definition: ${{ steps.task-def-3.outputs.task-definition }}
         service: ${{ env.AWS_ECS_SERVICE_NAME_3 }}
         cluster: ${{ env.AWS_ECR_CLUSTER_NAME }}
         wait-for-service-stability: true
