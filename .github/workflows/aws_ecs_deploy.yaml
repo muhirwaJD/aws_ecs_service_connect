@@ -112,7 +112,7 @@ jobs:
       id: task-def-3
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
-        task-definition: ./service-connect-demo-task-def-3.json
+        task-definition: service-connect-demo-task-def-3.json
         container-name: ${{ env.AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_3 }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
@@ -139,6 +139,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
         task-definition: ${{ steps.task-def-3.outputs.task-definition }}
-        service: ${{ env.AWS_ECS_SERVICE_NAME_3 }}
+        service: ${{ env.AWS_ECR_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_3 }}
         cluster: ${{ env.AWS_ECR_CLUSTER_NAME }}
         wait-for-service-stability: true
