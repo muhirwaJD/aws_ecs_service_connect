@@ -91,7 +91,7 @@ jobs:
       id: task-def-1
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
-        task-definition: aws-task-definition-1.json
+        task-definition: service-connect-demo-task-def-1.json
         container-name: ${{ env.AWS_ECR_REPOSITORY_NAME }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
@@ -99,7 +99,7 @@ jobs:
       id: task-def-2
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
-        task-definition: aws-task-definition-2.json
+        task-definition: service-connect-demo-task-def-2.json
         container-name: ${{ env.AWS_ECR_REPOSITORY_NAME }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
@@ -107,7 +107,7 @@ jobs:
       id: task-def-3
       uses: aws-actions/amazon-ecs-render-task-definition@master
       with:
-        task-definition: aws-task-definition-3.json
+        task-definition: service-connect-demo-task-def-3.json
         container-name: ${{ env.AWS_ECR_REPOSITORY_NAME }}
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
