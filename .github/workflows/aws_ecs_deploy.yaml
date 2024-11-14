@@ -117,6 +117,7 @@ jobs:
         image: ${{ steps.login-ecr.outputs.registry }}/${{ env.AWS_ECR_REPOSITORY_NAME }}:${{ env.IMAGE_TAG }}
 
     # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
+    # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay
     - name: Deploy Amazon ECS task definition to ECS service 1
       id: ecs-service-1
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
@@ -127,6 +128,7 @@ jobs:
         wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
 
     # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
+    # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay
     - name: Deploy Amazon ECS task definition to ECS service 2
       id: ecs-service-2
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
@@ -137,6 +139,7 @@ jobs:
         wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
 
     # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
+    # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay
     - name: Deploy Amazon ECS task definition to ECS service 3
       id: ecs-service-3
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
