@@ -36,8 +36,10 @@
 # ****************************************************************************************************** #
 
 on:
-  release:
-    types: [created]
+  # release:
+  #   types: [created]
+  # pull_request:
+  #   branches: [ main ]
   workflow_dispatch:
 
 name: AWS ECS Deploy
@@ -49,7 +51,8 @@ jobs:
     env:
       # shared between all services
       AWS_ECR_REPOSITORY_NAME: service-connect-demo-ecr
-      AWS_ECS_CLUSTER_NAME: service-connect-demo-cluster
+      AWS_ECS_CLUSTER_NAME_1: service-connect-demo-cluster-1
+      AWS_ECS_CLUSTER_NAME_2: service-connect-demo-cluster-2
       AWS_ECS_SERVICE_NAME_1: service-connect-demo-service-1
       AWS_ECS_SERVICE_NAME_2: service-connect-demo-service-2
       AWS_ECS_SERVICE_NAME_3: service-connect-demo-service-3
@@ -118,33 +121,33 @@ jobs:
 
     # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
     # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay
-    - name: Deploy Amazon ECS task definition to ECS service 1
+    - name: Deploy Amazon ECS task definition 1 to ECS service 1 in ECS cluster 1
       id: ecs-service-1
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
         task-definition: ${{ steps.task-def-1.outputs.task-definition }}
-        service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_1 }}
-        cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
+        service: ${{ env.AWS_ECS_CLUSTER_NAME_1 }}/${{ env.AWS_ECS_SERVICE_NAME_1 }}
+        cluster: ${{ env.AWS_ECS_CLUSTER_NAME_1 }}
         wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
 
     # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
     # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay
-    - name: Deploy Amazon ECS task definition to ECS service 2
+    - name: Deploy Amazon ECS task definition 2 to ECS service 2 in ECS cluster 1
       id: ecs-service-2
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
         task-definition: ${{ steps.task-def-2.outputs.task-definition }}
-        service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_2 }}
-        cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
+        service: ${{ env.AWS_ECS_CLUSTER_NAME_1 }}/${{ env.AWS_ECS_SERVICE_NAME_2 }}
+        cluster: ${{ env.AWS_ECS_CLUSTER_NAME_1 }}
         wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
 
     # set `target_group` `deregistration_delay` parameter to lower value, otherwise long time to deploy
     # https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#deregistration-delay
-    - name: Deploy Amazon ECS task definition to ECS service 3
+    - name: Deploy Amazon ECS task definition 3 to ECS service 3 in ECS cluster 2
       id: ecs-service-3
       uses: aws-actions/amazon-ecs-deploy-task-definition@master
       with:
         task-definition: ${{ steps.task-def-3.outputs.task-definition }}
-        service: ${{ env.AWS_ECS_CLUSTER_NAME }}/${{ env.AWS_ECS_SERVICE_NAME_3 }}
-        cluster: ${{ env.AWS_ECS_CLUSTER_NAME }}
+        service: ${{ env.AWS_ECS_CLUSTER_NAME_2 }}/${{ env.AWS_ECS_SERVICE_NAME_3 }}
+        cluster: ${{ env.AWS_ECS_CLUSTER_NAME_2 }}
         wait-for-service-stability: false  # whether to wait for ECS service to reach stable state after deploying
