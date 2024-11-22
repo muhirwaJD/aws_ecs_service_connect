@@ -112,6 +112,7 @@ npm install -g aws-cdk
 
 ### Commands
 
+- `cdk init app --language python` - create the initial CDK app locally
 - `cdk bootstrap` - deploying the AWS CDK for the first time
 - `cdk synth` - constucts CloudFormation template and does some verification checks
 - `cdk deploy --all` - deploy all CDK components
