@@ -14,7 +14,7 @@ def hello() -> str:
 @flask_app.route('/return_message')
 def get_message() -> str:
     ''' endpoint to test AWS ECS Service Connect functionality '''
-    return 'here is a message from flask_app_2!'
+    return 'here is a message from flask_app_2 (with mod)!'
 
 # if __name__ == '__main__':
 #     flask_app.run(host='0.0.0.0')
