@@ -16,7 +16,7 @@
   <h3 align="center">AWS ECS Service Connect</h3>
 
   <p align="center">
-    Enable Service Connect with AWS ECS to create a microservices architecture.
+    Microservices on AWS with ECS Service Connect
     <br />
     <a href="https://github.com/programmingwithalex/aws_ecs_service_connect">View Demo</a>
     ·
@@ -53,13 +53,18 @@
 
 ## Series Outline
 
-1. Create [ECS components](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) (Clusters, Task Definitions, & Services)
+1. Get microservices example running locally using `docker-compose`
 
-2. Enable [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) for ECS Services using AWS Cloud Map
+1. Create working example of microservices on AWS using [ECS Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+    * will not be production ready
+    * will rely on a lot of default values provided by AWS, with no networking setup by us
 
-3. Push Flask web apps from [ECR Repos](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html) as Docker Images to Each ECS Service to Test Connectivity
+1. Create production-ready example of microservices on AWS using [ECS Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html)
+    * configure networking setup and apply that to ECS components
 
-4. Automate deployments with [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
+1. Use GitHub Actions to automate deployments to AWS ECS components, referred to as Continuous Deployment (CD)
+
+1. Create networking setup and ECS components automatically with a single script using [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -76,7 +81,6 @@
 - Application Load Balancer (ALB)
 - AWS Cloud Development Kit (CDK)
   - written in Python
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
