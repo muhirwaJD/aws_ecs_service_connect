@@ -46,8 +46,8 @@
           </ul>
       </ul>
     </li>
-    <li><a href="#aws-cdk-commands">AWS (CDK) Commands</a></li>
-    <li><a href="#refences">References</a></li>
+    <li><a href="#commands">AWS (CDK) Commands</a></li>
+    <li><a href="#references">References</a></li>
   </ol>
 </details>
 
