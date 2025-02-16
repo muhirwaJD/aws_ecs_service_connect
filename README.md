@@ -18,7 +18,7 @@
   <p align="center">
     Microservices on AWS with ECS Service Connect
     <br />
-    <a href="https://github.com/programmingwithalex/aws_ecs_service_connect">View Demo</a>
+    <a href="https://www.youtube.com/watch?v=rK__7D9-HbY&list=PLbn3jWIXv_iZhs7hxhKlCoBRrrLQ2OG6Z&index=1">View YouTube Demo</a>
     ·
     <a href="https://github.com/programmingwithalex/aws_ecs_service_connect/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
