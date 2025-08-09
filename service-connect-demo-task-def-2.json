@@ -1,0 +1,103 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-1:888577022995:task-definition/service-connect-demo-task-def-2:1",
+    "containerDefinitions": [
+        {
+            "name": "flask-app-2",
+            "image": "888577022995.dkr.ecr.eu-west-1.amazonaws.com/service-connect-demo-ecr:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "flask-app-2",
+                    "containerPort": 5001,
+                    "hostPort": 5001,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "command": [
+                "python",
+                "-m",
+                "flask",
+                "run",
+                "--host=0.0.0.0",
+                "--port=5001"
+            ],
+            "environment": [
+                {
+                    "name": "FLASK_APP",
+                    "value": "flask_app_2/app.py"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/service-connect-demo-task-def-2",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "eu-west-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "service-connect-demo-task-def-2",
+    "taskRoleArn": "arn:aws:iam::888577022995:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::888577022995:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "ARM64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2025-08-08T17:30:20.730Z",
+    "registeredBy": "arn:aws:iam::888577022995:user/muhirwa",
+    "enableFaultInjection": false,
+    "tags": []
+}

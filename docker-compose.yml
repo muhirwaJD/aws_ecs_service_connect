@@ -1,5 +1,3 @@
-version: '3.1'
-
 services:
   flask_app_1:
     build:
@@ -21,7 +19,7 @@ services:
     expose:  # container communication only, no host communication
       - 5000
     ports:  # communication with host
-      - 5000:5000
+      - 5050:5000
     container_name: flask_app_1
     # allows for debugging with pdb
     stdin_open: true

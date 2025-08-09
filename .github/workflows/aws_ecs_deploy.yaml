@@ -65,7 +65,7 @@ jobs:
       AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_2: flask-app-2
       AWS_ECS_TASK_DEFINITION_CONTAINER_NAME_3: flask-app-3
 
-      AWS_DEFAULT_REGION: us-east-1
+      AWS_DEFAULT_REGION: eu-west-1
       IMAGE_TAG: ${{ github.sha }}
       # IMAGE_TAG: latest
 
