@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Build docker image') {
             steps {
-                sh 'docker build -t service-connect:$GIT_COMMIT .'
+                sh 'docker build -t muhirwajd/service-connect:$GIT_COMMIT .'
             }
         }
         stage ('Push docker image') {
