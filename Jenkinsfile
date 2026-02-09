@@ -2,11 +2,6 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage ('Build docker image') {
             steps {
                 sh 'docker build -t service-connect:$GIT_COMMIT .'
@@ -14,7 +9,7 @@ pipeline {
         }
         stage ('Push docker image') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-registry') {
+                withDockerRegistry(credentialsId: 'docker-registry', url: 'https://index.docker.io/v1/') {
                     sh 'docker push service-connect:$GIT_COMMIT'
                 }
             }
