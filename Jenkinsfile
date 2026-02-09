@@ -10,7 +10,7 @@ pipeline {
         stage ('Push docker image') {
             steps {
                 withDockerRegistry(credentialsId: 'docker-registry', url: 'https://index.docker.io/v1/') {
-                    sh 'docker push service-connect:$GIT_COMMIT'
+                    sh 'docker push muhirwajd/service-connect:$GIT_COMMIT'
                 }
             }
         }
