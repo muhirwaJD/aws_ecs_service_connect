@@ -13,8 +13,8 @@ pipeline {
             }
         }
         stage ('Push docker image') {
-            withDockerRegistry(credentialsId: 'docker-registry') {
-                steps {
+            steps {
+                withDockerRegistry(credentialsId: 'docker-registry') {
                     sh 'docker push service-connect:$GIT_COMMIT'
                 }
             }
